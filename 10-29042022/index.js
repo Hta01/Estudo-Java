@@ -1,34 +1,11 @@
-/*
-Estrutura de backend, onde iremos selecionar,
- cadastrar , atualizar  e deletar dados sobre os
- clientes, ou seja, criaresmos um crud
- CRUD
-    C -> Create:Quando cria-se dados no banco
-    R -> Read:Quando lemos dados no banco
-    U -> Update:Quanto atualizamos dados no banco
-    D -> Delete:Quando apagamos dados no banco
-
-Vamos usar os verbos:GET, POST, PUT, DELETE, onde:
-GET -> Read
-POST -> Create
-PUT -> Update
-DELETE -> Delete
-
-
-
-*/
-// importação do modulo express
+// importação da express
 const express = require("express");
-
-//importação do modulo do mongoose
+// importação do modulo do mongoose
 const mongoose = require("mongoose");
-
-//criação do app referente ao express
+// criação do app referente ao express
 const app = express();
-
-//preparar o servidor para receber json
+// preparar o serv para receber json
 app.use(express.json());
-
 /*
 caminho do banco de dados mongodb
 mongodb+srv://agatha:<password>@cluster0.4qu1y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
@@ -42,20 +19,21 @@ Definição do esquema de dados da tabela
 Schema
 */
 const tabela = mongoose.Schema({
-  nome: { type: String, require },
-  email: { type: String, require },
-  telefone: { type: String },
-  cidades: { type: String },
+  nomeprod: { type: String, require },
+  descricao: { type: String, require },
+  categoria: { type: String },
+  quantidade: { type: Number, require },
+  preco: { type: Number },
 });
 
-const Cliente = mongoose.model("tbcliente", tabela);
+const Produto = mongoose.model("tbproduto", tabela);
 
 //definição de uma rota padrão
-const default_route = "/api/cliente";
+const default_route = "/api/produto";
 
 //rota para listar os clientes com endpoint listar
 app.get(`${default_route}/listar`, (req, res) => {
-  Cliente.find()
+  Produto.find()
     .then((dados) => {
       res.status(200).send({ output: dados });
     })
@@ -68,8 +46,8 @@ app.get(`${default_route}/listar`, (req, res) => {
 
 //rota para cadastrar os clientes com endpoint cadastrar
 app.post(`${default_route}/cadastrar`, (req, res) => {
-  const cli = new Cliente(req.body);
-  cli
+  const prod = new Produto(req.body);
+  prod
     .save()
     .then((dados) => {
       res.status(201).send({ output: `Cadastro realizado`, payload: dados });
@@ -80,7 +58,7 @@ app.post(`${default_route}/cadastrar`, (req, res) => {
 //rota para atualizar os clientes com endpoint atualizar
 //passagem de argumentos pela url com o id do cliente
 app.put(`${default_route}/atualizar/:id`, (req, res) => {
-  Cliente.findByIdAndUpdate(
+  Produto.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true },
@@ -95,7 +73,7 @@ app.put(`${default_route}/atualizar/:id`, (req, res) => {
 
 //rota para apagar cliente com endpoint deletar
 app.delete(`${default_route}/apagar/:id`, (req, res) => {
-  Cliente.findByIdAndDelete(req.params.id, (erro, dados) => {
+  Produto.findByIdAndDelete(req.params.id, (erro, dados) => {
     if (erro) {
       return res
         .status(500)
