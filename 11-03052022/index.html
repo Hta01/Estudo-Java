@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+    
+<body onload="carregarDados()">
+    <header>
+        <h1>Hip Hop</h1>
+        <a href="#" onclick="tela_cadastro();">Cadastro</a>
+    </header>
+
+    <main>
+        <h2> Historia  </h2>
+        <p>
+            A dança hip hop refere-se aos estilos de dança sociais ou coreografados relacionados à música e à cultura hip hop.
+            Isto incluiu uma grande variedade de estilos, especialmente breakdance e popping, os quais foram desenvolvidos na década de 70 por afros e latino-americanos.
+            O que diferencia a dança hip hop de outros tipos de dança é o freestyle e os seus dançarinos frequentemente estarem envolvidos em batalhas 
+            - competições são geralmente realizadas em uma Saifer, um espaço de dança circular que se forma naturalmente quando a dança inicia.
+            Os três elementos - freestyle, batalhas e Saifers - são os componentes da dança hip hop.
+        </p>
+            <div class="imghome">
+               <img src ="img/hiphop.jpg">
+            </div>
+
+            <div class="imghome">
+                <img src ="img/hiphop2.jpg">
+            </div> 
+            <br>
+
+           
+
+
+    
+
+    </main>
+    <h3>Apresentação</h3>
+            
+    <div class="videohome">
+        <iframe src="https://www.youtube.com/embed/JQaYwRTfYRQ" title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+
+    </div>
+
+    <section>
+        <form onsubmit="return false">
+            <input type="text" placeholder="Nome">
+            <input type="email" placeholder="Email">
+            <input type="tel" placeholder="Telefone">
+            <input type="text" placeholder="Cidade">
+            <button onclick="cadastrar()">Cadastrar</button>
+        </form>
+    </section>
+    
+
+    <script src="js/script.js"></script>
+
+    
+</body>
+</html>
