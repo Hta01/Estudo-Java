@@ -52,3 +52,8 @@ function tela_cadastro() {
   document.getElementsByTagName("section")[0].style.boxShadow =
     "0px 0px 0px 100vw rgba(0,0,0,0.8)";
 }
+function fechar_cadastro() {
+  document.getElementsByTagName("section")[0].style.marginTop = "-4000px";
+  document.getElementsByTagName("section")[0].style.boxShadow =
+    "0px 0px 0px 0vw rgba(0,0,0,0.8)";
+}
